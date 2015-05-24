@@ -3,7 +3,12 @@ Formats
 
 <% docs.each do |doc| %>
 ### <%= doc['name'] %>
+<%= doc['description'] %>
 
+#### Event metadaa
+<%  unless doc['time_field'].nil? %>
+* time source field : <%= doc['time_field'] %>
+<%  end %>
 #### Fields :
 <%   doc['fields'].each do |fname, fopts| %>
 * <%= fopts['path'] || fname %>
@@ -12,6 +17,9 @@ Formats
 <%     end %>
 <%     unless fopts['type'].nil? %>
   * type: <%= fopts['type']%>
+<%     end %>
+<%     unless fopts['optional'].nil? %>
+  * optional: <%= fopts['optional']%>
 <%     end %>
 <%     unless fopts['values'].nil? %>
   * example values:

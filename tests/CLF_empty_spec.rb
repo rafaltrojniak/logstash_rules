@@ -1,10 +1,12 @@
 require './tests/helper.rb'
 
-results = grab_results('CLF')
-source = grab_source('CLF')
-logs = grab_logs('CLF')
+example='CLF_empty'
 
-RSpec.describe "CLF" do
+results = grab_results(example)
+source = grab_source(example)
+logs = grab_logs(example)
+
+RSpec.describe example do
   describe "Logs" do
 		it "Single event for single line" do
 			expect(results.count).to eq(1)
@@ -12,6 +14,12 @@ RSpec.describe "CLF" do
 		describe results[0] do
 			it "Client ip resolved" do
 				expect(results[0]["client_ip"]).to eq("127.0.0.1")
+			end
+			it "user should be empty" do
+				expect(results[0]["user"]).to eq(nil)
+			end
+			it "user should be empty" do
+				expect(results[0]["group"]).to eq(nil)
 			end
 		end
 	end
@@ -21,3 +29,4 @@ RSpec.describe "CLF" do
 		end
 	end
 end
+

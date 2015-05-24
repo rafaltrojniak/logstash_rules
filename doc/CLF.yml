@@ -1,7 +1,9 @@
 ---
 name: Common Log Format
+description: This is commonly used log format for storing information about HTTP requests processed by HTTP server like Apache
 examples:
   - CLF
+time_field: '@clf.timestamp'
 fields:
   method:
     path: "@clf.method"
@@ -20,8 +22,10 @@ fields:
       - null
   group:
     description: HTTP authorized group
+    optional: true
   request:
     description: HTTP request line
     type: "string"
+    optional: true
     values:
       - "GET / HTTP/1.1"
