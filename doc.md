@@ -8,22 +8,22 @@ Formats
   * Description : HTTP Request method
   * type: string
   * example values:
-    * type: "GET"
-    * type: "POST"
-    * type: "HEAD"
+    * "GET"
+    * "POST"
+    * "HEAD"
 * @clf.method
   * Description : HTTP authorized user
   * type: string
   * example values:
-    * type: "john"
-    * type: nil
+    * "john"
+    * nil
 * group
   * Description : HTTP authorized group
 * request
   * Description : HTTP request line
   * type: string
   * example values:
-    * type: "GET / HTTP/1.1"
+    * "GET / HTTP/1.1"
 
 #### Example sources
 Source:
