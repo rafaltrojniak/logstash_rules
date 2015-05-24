@@ -1,8 +1,8 @@
 require './tests/helper.rb'
 
-results = grab_results('inputs/CLF.json')
-source = grab_source('inputs/CLF.json')
-logs = grab_logs('inputs/CLF.json')
+results = grab_results('CLF')
+source = grab_source('CLF')
+logs = grab_logs('CLF')
 
 RSpec.describe "CLF" do
   describe "Logs" do

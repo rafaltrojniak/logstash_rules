@@ -13,7 +13,8 @@ parse: $(result)
 verify: parse $(wildcard tests/*_spec.rb)
 	~/.gem/ruby/2.2.0/bin/rspec --color tests/
 
-doc: parse
+doc: parse gen_doc.rb
+	ruby gen_doc.rb
 
 inputs/%.json.result: inputs/%.json  $(wildcard rules/*)
 	${RM} $@ $(addsuffix .log,$<)

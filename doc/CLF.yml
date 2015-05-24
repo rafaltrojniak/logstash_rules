@@ -1,0 +1,27 @@
+---
+name: Common Log Format
+examples:
+  - CLF
+fields:
+  method:
+    path: "@clf.method"
+    description: HTTP Request method
+    type: "string"
+    values:
+      - "GET"
+      - "POST"
+      - "HEAD"
+  user:
+    path: "@clf.method"
+    description: HTTP authorized user
+    type: "string"
+    values:
+      - "john"
+      - null
+  group:
+    description: HTTP authorized group
+  request:
+    description: HTTP request line
+    type: "string"
+    values:
+      - "GET / HTTP/1.1"

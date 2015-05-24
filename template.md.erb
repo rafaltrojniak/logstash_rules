@@ -1,0 +1,37 @@
+Formats
+-------
+
+<% docs.each do |doc| %>
+### <%= doc['name'] %>
+
+#### Fields :
+<%   doc['fields'].each do |fname, fopts| %>
+* <%= fopts['path'] || fname %>
+<%     unless fopts['description'].nil? %>
+  * Description : <%= fopts['description'] %>
+<%     end %>
+<%     unless fopts['type'].nil? %>
+  * type: <%= fopts['type']%>
+<%     end %>
+<%     unless fopts['values'].nil? %>
+  * example values:
+<%       fopts['values'].each do |ex| %>
+    * type: <%= ex.inspect %>
+<%       end %>
+<%     end %>
+<%   end %>
+
+#### Example sources
+<% doc['examples'].each do |example| %>
+Source:
+```json
+<%= JSON.pretty_generate(sources[example]) %>
+
+```
+Result:
+```json
+<%= JSON.pretty_generate(results[example]) %>
+
+```
+<% end %>
+<% end %>
