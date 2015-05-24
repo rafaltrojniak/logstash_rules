@@ -39,3 +39,11 @@ Details
   * Grab some resulted events
   * Decorate them
   * Ad description of the fields
+
+### How to use
+* First create example input event in JSON format in input/YourFormat.json (put the line in message field)
+* With the example message, you can start to write your rules in rules/ directory
+* To check if the output is what you expected you can write some Rspec tests in spec/YourFormat_spec.rb file
+* At the end you can create some documentation in doc/YourFormat.yml directory
+
+Please see examples to start your work
