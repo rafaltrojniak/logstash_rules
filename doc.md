@@ -11,30 +11,30 @@ This is commonly used log format for storing information about HTTP requests pro
   * Description : HTTP Request method
   * type: string
   * example values:
-    * "GET"
-    * "POST"
-    * "HEAD"
+    * `"GET"`
+    * `"POST"`
+    * `"HEAD"`
 * `@clf.user`
   * Description : HTTP authorized user
   * type: string
   * example values:
-    * "user-identifier"
+    * `"user-identifier"`
 * `@clf.group`
   * Description : HTTP authorized group
   * optional: true
   * example values:
-    * "frank"
+    * `"frank"`
 * `@clf.request`
   * Description : HTTP request line
   * type: string
   * optional: true
   * example values:
-    * "GET /apache_pb.gif HTTP/1.0"
+    * `"GET /apache_pb.gif HTTP/1.0"`
 * `@clf.timestamp`
   * Description : Timestamp of the request start
   * type: string
   * example values:
-    * "12/Oct/2001:13:55:36 -0700"
+    * `"12/Oct/2001:13:55:36 -0700"`
 
 #### Example sources
 Source:
