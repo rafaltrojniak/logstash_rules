@@ -4,31 +4,37 @@ Formats
 ### Common Log Format
 This is commonly used log format for storing information about HTTP requests processed by HTTP server like Apache
 #### Event metadaa
-* time source field : @clf.timestamp
+* time source field : `@clf.timestamp`
 
 #### Fields :
-* @clf.method
+* `@clf.method`
   * Description : HTTP Request method
   * type: string
   * example values:
     * "GET"
     * "POST"
     * "HEAD"
-* @clf.method
+* `@clf.user`
   * Description : HTTP authorized user
   * type: string
   * example values:
-    * "john"
-    * nil
-* group
+    * "user-identifier"
+* `@clf.group`
   * Description : HTTP authorized group
   * optional: true
-* request
+  * example values:
+    * "frank"
+* `@clf.request`
   * Description : HTTP request line
   * type: string
   * optional: true
   * example values:
-    * "GET / HTTP/1.1"
+    * "GET /apache_pb.gif HTTP/1.0"
+* `@clf.timestamp`
+  * Description : Timestamp of the request start
+  * type: string
+  * example values:
+    * "12/Oct/2001:13:55:36 -0700"
 
 #### Example sources
 Source:

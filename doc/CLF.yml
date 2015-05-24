@@ -14,18 +14,19 @@ fields:
       - "POST"
       - "HEAD"
   user:
-    path: "@clf.method"
+    path: "@clf.user"
     description: HTTP authorized user
     type: "string"
-    values:
-      - "john"
-      - null
   group:
+    path: "@clf.group"
     description: HTTP authorized group
     optional: true
   request:
+    path: "@clf.request"
     description: HTTP request line
     type: "string"
     optional: true
-    values:
-      - "GET / HTTP/1.1"
+  timestamp:
+    path: "@clf.timestamp"
+    description: Timestamp of the request start
+    type: "string"

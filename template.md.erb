@@ -7,12 +7,12 @@ Formats
 
 #### Event metadaa
 <%  unless doc['time_field'].nil? %>
-* time source field : <%= doc['time_field'] %>
+* time source field : `<%= doc['time_field'] %>`
 <%  end %>
 
 #### Fields :
 <%   doc['fields'].each do |fname, fopts| %>
-* <%= fopts['path'] || fname %>
+* `<%= fopts['path'] || fname %>`
 <%     unless fopts['description'].nil? %>
   * Description : <%= fopts['description'] %>
 <%     end %>
