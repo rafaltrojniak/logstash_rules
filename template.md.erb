@@ -1,7 +1,7 @@
 Formats
 -------
-
 <% docs.each do |doc| %>
+
 ### <%= doc['name'] %>
 <%= doc['description'] %>
 
@@ -9,6 +9,7 @@ Formats
 <%  unless doc['time_field'].nil? %>
 * time source field : <%= doc['time_field'] %>
 <%  end %>
+
 #### Fields :
 <%   doc['fields'].each do |fname, fopts| %>
 * <%= fopts['path'] || fname %>

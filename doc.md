@@ -5,6 +5,7 @@ Formats
 This is commonly used log format for storing information about HTTP requests processed by HTTP server like Apache
 #### Event metadaa
 * time source field : @clf.timestamp
+
 #### Fields :
 * @clf.method
   * Description : HTTP Request method
