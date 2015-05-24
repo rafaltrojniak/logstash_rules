@@ -1,0 +1,3 @@
+*.swp
+inputs/*.result
+inputs/*.log
