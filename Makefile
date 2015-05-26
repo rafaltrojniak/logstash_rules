@@ -3,7 +3,7 @@ inputs=$(wildcard inputs/*.json)
 result=$(addsuffix .result,$(inputs))
 logs=$(addsuffix .log,$(inputs))
 
-rspec=~/.gem/ruby/2.2.0/bin/rspec
+rspec=.gem/bin/rspec
 logstash=/opt/logstash/bin/logstash
 
 all : parse verify doc
@@ -13,8 +13,11 @@ clean:
 
 parse: $(result)
 
-verify: parse $(wildcard tests/*_spec.rb)
-	$(rspec) --color tests/
+verify: $(rspec) parse $(wildcard tests/*_spec.rb)
+	GEM_HOME=.gem/ $(rspec) --color tests/
+
+$(rspec):
+	gem install rspec -i .gem/ --no-user-install
 
 doc: parse gen_doc.rb
 	ruby gen_doc.rb > doc.md
