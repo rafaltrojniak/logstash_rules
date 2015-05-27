@@ -46,7 +46,7 @@ docs.each do |doc|
         end
       end
     end
-    fvals['values'] = values.uniq.sort
+    fvals['values'] = values.uniq
   end #field
 end # doc
 
