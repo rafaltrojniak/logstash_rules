@@ -1,0 +1,9 @@
+---
+name: XML_Xpath example
+examples:
+  - xml
+fields:
+  message_parsed:
+    description: XML contents
+  x_failed_logins:
+    description: Result of XPath query
