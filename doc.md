@@ -1,48 +1,43 @@
 Formats
 -------
 
-### Common Log Format
-This is commonly used log format for storing information about HTTP requests processed by HTTP server like Apache
+### Common Log Format-like logs
+
 #### Event metadaa
-* time source field : `@clf.timestamp`
 
 #### Fields :
-* `@clf.method`
-  * Description : HTTP Request method
+* `http_timestamp`
+  * Description : HTTP Timestamp
   * type: string
   * example values:
-    * `"GET"`
-    * `"POST"`
-    * `"HEAD"`
-* `@clf.user`
-  * Description : HTTP authorized user
+    * `"26/May/2015:21:56:51 -0700"`
+* `request`
+  * Description : HTTP Request first line
   * type: string
   * example values:
-    * `"user-identifier"`
-* `@clf.group`
-  * Description : HTTP authorized group
-  * optional: true
+    * `"POST /url HTTP/1.1"`
+* `client_ip`
+  * Description : IP Address of the client
   * example values:
-    * `"frank"`
-* `@clf.request`
-  * Description : HTTP request line
-  * type: string
-  * optional: true
+    * `"192.168.1.10"`
+* `response`
+  * Description : Response status code
+  * type: int
   * example values:
-    * `"GET /apache_pb.gif HTTP/1.0"`
-* `@clf.timestamp`
-  * Description : Timestamp of the request start
-  * type: string
+    * `200`
+* `response_time`
+  * Description : Time that server takes to respond
+  * type: int
   * example values:
-    * `"12/Oct/2001:13:55:36 -0700"`
+    * `50`
 
 #### Example sources
 Source:
 ```json
 [
   {
-    "format": "clf",
-    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326"
+    "format": "selvam",
+    "message": "192.168.1.10 - - [26/May/2015:21:56:51 -0700] \"POST /url HTTP/1.1\" 200 50"
   }
 ]
 ```
@@ -50,20 +45,19 @@ Result:
 ```json
 [
   {
-    "format": "clf",
-    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326",
+    "format": "selvam",
+    "message": "192.168.1.10 - - [26/May/2015:21:56:51 -0700] \"POST /url HTTP/1.1\" 200 50",
     "@version": "1",
-    "@timestamp": "2001-10-12T20:55:36.000Z",
+    "@timestamp": "2015-05-27T04:56:51.000Z",
     "host": "zip",
-    "client_ip": "127.0.0.1",
-    "@clf": {
-      "user": "user-identifier",
-      "group": "frank",
-      "timestamp": "12/Oct/2001:13:55:36 -0700",
-      "request": "GET /apache_pb.gif HTTP/1.0",
-      "response": "200",
-      "bytes": "2326"
-    }
+    "client_ip": "192.168.1.10",
+    "http_timestamp": "26/May/2015:21:56:51 -0700",
+    "request": "POST /url HTTP/1.1",
+    "response": 200,
+    "response_time": 50,
+    "tags": [
+      "matched_above_10"
+    ]
   }
 ]
 ```

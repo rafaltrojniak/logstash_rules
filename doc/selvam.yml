@@ -1,0 +1,19 @@
+---
+name: Common Log Format-like logs
+examples:
+  - selvam
+fields:
+  http_timestamp:
+    description: HTTP Timestamp
+    type: "string"
+  request:
+    description: HTTP Request first line
+    type: "string"
+  client_ip:
+    description: IP Address of the client
+  response:
+    description: Response status code
+    type: "int"
+  response_time:
+    description: Time that server takes to respond
+    type: "int"
