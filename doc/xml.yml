@@ -2,6 +2,7 @@
 name: XML_Xpath example
 examples:
   - xml
+  - xml_xmlns
 fields:
   message_parsed:
     description: XML contents
