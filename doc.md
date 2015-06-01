@@ -42,7 +42,8 @@ Source:
 [
   {
     "format": "clf",
-    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326"
+    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326",
+    "type": "CLF"
   }
 ]
 ```
@@ -52,6 +53,7 @@ Result:
   {
     "format": "clf",
     "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326",
+    "type": "CLF",
     "@version": "1",
     "@timestamp": "2001-10-12T20:55:36.000Z",
     "host": "zip",

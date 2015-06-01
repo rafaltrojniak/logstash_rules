@@ -31,3 +31,7 @@ inputs/%.json.result: inputs/%.json  $(wildcard rules/*)
 	  path => \"$@\"\
 		flush_interval => 0\
 	}}" -f rules/ -l $(addsuffix .log,$<) <$<
+
+es_store: parse
+#	gem install elasticsearch -i .gem/ --no-user-install
+	GEM_HOME=.gem/ ./es_store_test.rb
