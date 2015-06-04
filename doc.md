@@ -10,12 +10,12 @@ Formats
   * Description : XML contents
   * example values:
     * `{"stats"=>[{"current-online-user-count"=>["1730"], "login-rate"=>["0"], "successful_logins"=>["93645"], "failed_logins"=>["84583"], "uptime"=>["1900999"]}, {"total-message-packets"=>["5428196"], "total-presence-packets"=>["288328380"], "total-iq-packets"=>["4977074"], "messages-in-last-time-slice"=>["0"], "average-message-size"=>["0"]}]}`
-    * `{"format"=>"xml_xpath", "message"=>"<stats><stats xmlns='jcs:stats:jsm'><current-online-user-count>1730</current-online-user-count><login-rate>0</login-rate><successful_logins>93645</successful_logins><failed_logins>84583</failed_logins><uptime>1900999</uptime></stats>\n<stats xmlns='jcs:stats:delivery'><total-message-packets>5428196</total-message-packets><total-presence-packets>288328380</total-presence-packets><total-iq-packets>4977074</total-iq-packets><messages-in-last-time-slice>0</messages-in-last-time-slice><average-message-size>0</average-message-size></stats></stats>", "@version"=>"1", "@timestamp"=>"2015-05-27T17:42:39.417Z", "host"=>"zip", "message_parsed"=>{"stats"=>[{"xmlns"=>"jcs:stats:jsm", "current-online-user-count"=>["1730"], "login-rate"=>["0"], "successful_logins"=>["93645"], "failed_logins"=>["84583"], "uptime"=>["1900999"]}, {"xmlns"=>"jcs:stats:delivery", "total-message-packets"=>["5428196"], "total-presence-packets"=>["288328380"], "total-iq-packets"=>["4977074"], "messages-in-last-time-slice"=>["0"], "average-message-size"=>["0"]}]}, "tags"=>["xml_parsed"]}`
+    * `{"format"=>"xml_xpath", "message"=>"<stats><stats xmlns='jcs:stats:jsm'><current-online-user-count>1730</current-online-user-count><login-rate>0</login-rate><successful_logins>93645</successful_logins><failed_logins>84583</failed_logins><uptime>1900999</uptime></stats>\n<stats xmlns='jcs:stats:delivery'><total-message-packets>5428196</total-message-packets><total-presence-packets>288328380</total-presence-packets><total-iq-packets>4977074</total-iq-packets><messages-in-last-time-slice>0</messages-in-last-time-slice><average-message-size>0</average-message-size></stats></stats>", "@version"=>"1", "@timestamp"=>"2015-06-04T14:00:31.122Z", "host"=>"zip", "x_failed_logins"=>["84583"], "message_parsed"=>{"stats"=>[{"xmlns"=>"jcs:stats:jsm", "current-online-user-count"=>["1730"], "login-rate"=>["0"], "successful_logins"=>["93645"], "failed_logins"=>["84583"], "uptime"=>["1900999"]}, {"xmlns"=>"jcs:stats:delivery", "total-message-packets"=>["5428196"], "total-presence-packets"=>["288328380"], "total-iq-packets"=>["4977074"], "messages-in-last-time-slice"=>["0"], "average-message-size"=>["0"]}]}, "tags"=>["xml_parsed"]}`
 * `x_failed_logins`
   * Description : Result of XPath query
   * example values:
     * `["84583"]`
-    * `{"format"=>"xml_xpath", "message"=>"<stats><stats xmlns='jcs:stats:jsm'><current-online-user-count>1730</current-online-user-count><login-rate>0</login-rate><successful_logins>93645</successful_logins><failed_logins>84583</failed_logins><uptime>1900999</uptime></stats>\n<stats xmlns='jcs:stats:delivery'><total-message-packets>5428196</total-message-packets><total-presence-packets>288328380</total-presence-packets><total-iq-packets>4977074</total-iq-packets><messages-in-last-time-slice>0</messages-in-last-time-slice><average-message-size>0</average-message-size></stats></stats>", "@version"=>"1", "@timestamp"=>"2015-05-27T17:42:39.417Z", "host"=>"zip", "message_parsed"=>{"stats"=>[{"xmlns"=>"jcs:stats:jsm", "current-online-user-count"=>["1730"], "login-rate"=>["0"], "successful_logins"=>["93645"], "failed_logins"=>["84583"], "uptime"=>["1900999"]}, {"xmlns"=>"jcs:stats:delivery", "total-message-packets"=>["5428196"], "total-presence-packets"=>["288328380"], "total-iq-packets"=>["4977074"], "messages-in-last-time-slice"=>["0"], "average-message-size"=>["0"]}]}, "tags"=>["xml_parsed"]}`
+    * `{"format"=>"xml_xpath", "message"=>"<stats><stats xmlns='jcs:stats:jsm'><current-online-user-count>1730</current-online-user-count><login-rate>0</login-rate><successful_logins>93645</successful_logins><failed_logins>84583</failed_logins><uptime>1900999</uptime></stats>\n<stats xmlns='jcs:stats:delivery'><total-message-packets>5428196</total-message-packets><total-presence-packets>288328380</total-presence-packets><total-iq-packets>4977074</total-iq-packets><messages-in-last-time-slice>0</messages-in-last-time-slice><average-message-size>0</average-message-size></stats></stats>", "@version"=>"1", "@timestamp"=>"2015-06-04T14:00:31.122Z", "host"=>"zip", "x_failed_logins"=>["84583"], "message_parsed"=>{"stats"=>[{"xmlns"=>"jcs:stats:jsm", "current-online-user-count"=>["1730"], "login-rate"=>["0"], "successful_logins"=>["93645"], "failed_logins"=>["84583"], "uptime"=>["1900999"]}, {"xmlns"=>"jcs:stats:delivery", "total-message-packets"=>["5428196"], "total-presence-packets"=>["288328380"], "total-iq-packets"=>["4977074"], "messages-in-last-time-slice"=>["0"], "average-message-size"=>["0"]}]}, "tags"=>["xml_parsed"]}`
 
 #### Example sources
 Source:
@@ -34,7 +34,7 @@ Result:
     "format": "xml_xpath",
     "message": "<stats><stats><current-online-user-count>1730</current-online-user-count><login-rate>0</login-rate><successful_logins>93645</successful_logins><failed_logins>84583</failed_logins><uptime>1900999</uptime></stats>\n<stats><total-message-packets>5428196</total-message-packets><total-presence-packets>288328380</total-presence-packets><total-iq-packets>4977074</total-iq-packets><messages-in-last-time-slice>0</messages-in-last-time-slice><average-message-size>0</average-message-size></stats></stats>",
     "@version": "1",
-    "@timestamp": "2015-05-27T17:31:03.284Z",
+    "@timestamp": "2015-06-04T14:00:22.700Z",
     "host": "zip",
     "x_failed_logins": [
       "84583"
@@ -99,8 +99,11 @@ Result:
     "format": "xml_xpath",
     "message": "<stats><stats xmlns='jcs:stats:jsm'><current-online-user-count>1730</current-online-user-count><login-rate>0</login-rate><successful_logins>93645</successful_logins><failed_logins>84583</failed_logins><uptime>1900999</uptime></stats>\n<stats xmlns='jcs:stats:delivery'><total-message-packets>5428196</total-message-packets><total-presence-packets>288328380</total-presence-packets><total-iq-packets>4977074</total-iq-packets><messages-in-last-time-slice>0</messages-in-last-time-slice><average-message-size>0</average-message-size></stats></stats>",
     "@version": "1",
-    "@timestamp": "2015-05-27T17:42:39.417Z",
+    "@timestamp": "2015-06-04T14:00:31.122Z",
     "host": "zip",
+    "x_failed_logins": [
+      "84583"
+    ],
     "message_parsed": {
       "stats": [
         {

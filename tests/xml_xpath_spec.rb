@@ -1,6 +1,6 @@
 require './tests/helper.rb'
 
-%w(xml).each do |example|
+%w(xml xml_xmlns).each do |example|
 
   results = grab_results(example)
   source = grab_source(example)
