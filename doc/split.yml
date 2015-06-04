@@ -1,0 +1,9 @@
+---
+name: Split event
+description: Single event with array of object has been split to multiple events
+examples:
+  - split
+fields:
+  id:
+    description: ID of an event
+    type: "string"

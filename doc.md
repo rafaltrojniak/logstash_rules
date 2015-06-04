@@ -1,48 +1,31 @@
 Formats
 -------
 
-### Common Log Format
-This is commonly used log format for storing information about HTTP requests processed by HTTP server like Apache
+### Split event
+Single event with array of object has been split to multiple events
 #### Event metadaa
-* time source field : `@clf.timestamp`
 
 #### Fields :
-* `@clf.method`
-  * Description : HTTP Request method
+* `id`
+  * Description : ID of an event
   * type: string
   * example values:
-    * `"GET"`
-    * `"POST"`
-    * `"HEAD"`
-* `@clf.user`
-  * Description : HTTP authorized user
-  * type: string
-  * example values:
-    * `"user-identifier"`
-* `@clf.group`
-  * Description : HTTP authorized group
-  * optional: true
-  * example values:
-    * `"frank"`
-* `@clf.request`
-  * Description : HTTP request line
-  * type: string
-  * optional: true
-  * example values:
-    * `"GET /apache_pb.gif HTTP/1.0"`
-* `@clf.timestamp`
-  * Description : Timestamp of the request start
-  * type: string
-  * example values:
-    * `"12/Oct/2001:13:55:36 -0700"`
 
 #### Example sources
 Source:
 ```json
 [
   {
-    "format": "clf",
-    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326"
+    "results": [
+      {
+        "id": "a1",
+        "name": "hello"
+      },
+      {
+        "id": "a2",
+        "name": "logstash"
+      }
+    ]
   }
 ]
 ```
@@ -50,19 +33,22 @@ Result:
 ```json
 [
   {
-    "format": "clf",
-    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326",
     "@version": "1",
-    "@timestamp": "2001-10-12T20:55:36.000Z",
+    "@timestamp": "2015-06-04T22:35:39.313Z",
     "host": "zip",
-    "client_ip": "127.0.0.1",
-    "@clf": {
-      "user": "user-identifier",
-      "group": "frank",
-      "timestamp": "12/Oct/2001:13:55:36 -0700",
-      "request": "GET /apache_pb.gif HTTP/1.0",
-      "response": "200",
-      "bytes": "2326"
+    "result": {
+      "id": "a1",
+      "name": "hello"
+    }
+  },
+  {
+    "@version": "1",
+    "@timestamp": "2015-06-04T22:35:39.313Z",
+    "host": "zip",
+    "type": "clone",
+    "result": {
+      "id": "a2",
+      "name": "logstash"
     }
   }
 ]

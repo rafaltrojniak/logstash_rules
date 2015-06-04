@@ -1,6 +1,6 @@
 require './tests/helper.rb'
 
-%w( CLF CLF_empty).each do |example|
+%w( split ).each do |example|
 
   results = grab_results(example)
   source = grab_source(example)
@@ -9,15 +9,14 @@ require './tests/helper.rb'
   RSpec.describe example do
     describe "Logs" do
       it "Single event for single line" do
-        expect(results.count).to eq(1)
+        expect(results.count).to eq(2)
       end
       describe results[0] do
-        it "Client ip resolved" do
-          expect(results[0]["client_ip"]).to eq("127.0.0.1")
+        it "First element has first ID" do
+          expect(results[0]["result"]["id"]).to eq("a1")
         end
-
-        it "timestamp is parsed" do
-          expect(results[0]["@timestamp"]).to eq("2001-10-12T20:55:36.000Z")
+        it "Second element has second ID" do
+          expect(results[1]["result"]["id"]).to eq("a2")
         end
       end
     end
