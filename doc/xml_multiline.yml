@@ -1,0 +1,11 @@
+---
+name: XML Multiline parsing
+examples:
+  - xml_multiline
+fields:
+  message:
+    description: Joined XML
+    type: "string"
+  data:
+    description: Data extracted from XML
+    type: "object"

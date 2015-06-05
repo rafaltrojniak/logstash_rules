@@ -1,48 +1,90 @@
 Formats
 -------
 
-### Common Log Format
-This is commonly used log format for storing information about HTTP requests processed by HTTP server like Apache
+### XML Multiline parsing
+
 #### Event metadaa
-* time source field : `@clf.timestamp`
 
 #### Fields :
-* `@clf.method`
-  * Description : HTTP Request method
+* `message`
+  * Description : Joined XML
   * type: string
   * example values:
-    * `"GET"`
-    * `"POST"`
-    * `"HEAD"`
-* `@clf.user`
-  * Description : HTTP authorized user
-  * type: string
+    * `"<response>\n  <statusCode>200</statusCode>\n  <data>\n      <testId>150603_VD_9VJ</testId>\n      <average>\n         <loadTime>3594</loadTime>\n         <TTFB>282</TTFB>\n     </average>\n </data>\n</response>"`
+    * `{"message"=>"<response>\n  <statusCode>300</statusCode>\n  <data>\n      <testId>999999_VD_9VJ</testId>\n      <average>\n         <loadTime>4594</loadTime>\n         <TTFB>900</TTFB>\n     </average>\n </data>\n</response>", "@version"=>"1", "@timestamp"=>"2015-06-05T11:42:40.456Z", "host"=>"zip", "tags"=>["multiline"], "data"=>{"statusCode"=>["300"], "data"=>[{"testId"=>["999999_VD_9VJ"], "average"=>[{"loadTime"=>["4594"], "TTFB"=>["900"]}]}]}}`
+* `data`
+  * Description : Data extracted from XML
+  * type: object
   * example values:
-    * `"user-identifier"`
-* `@clf.group`
-  * Description : HTTP authorized group
-  * optional: true
-  * example values:
-    * `"frank"`
-* `@clf.request`
-  * Description : HTTP request line
-  * type: string
-  * optional: true
-  * example values:
-    * `"GET /apache_pb.gif HTTP/1.0"`
-* `@clf.timestamp`
-  * Description : Timestamp of the request start
-  * type: string
-  * example values:
-    * `"12/Oct/2001:13:55:36 -0700"`
+    * `{"statusCode"=>["200"], "data"=>[{"testId"=>["150603_VD_9VJ"], "average"=>[{"loadTime"=>["3594"], "TTFB"=>["282"]}]}]}`
+    * `{"message"=>"<response>\n  <statusCode>300</statusCode>\n  <data>\n      <testId>999999_VD_9VJ</testId>\n      <average>\n         <loadTime>4594</loadTime>\n         <TTFB>900</TTFB>\n     </average>\n </data>\n</response>", "@version"=>"1", "@timestamp"=>"2015-06-05T11:42:40.456Z", "host"=>"zip", "tags"=>["multiline"], "data"=>{"statusCode"=>["300"], "data"=>[{"testId"=>["999999_VD_9VJ"], "average"=>[{"loadTime"=>["4594"], "TTFB"=>["900"]}]}]}}`
 
 #### Example sources
 Source:
 ```json
 [
   {
-    "format": "clf",
-    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326"
+    "message": "<?xml version=\"1.0\" encoding=\"UTF-8\"/>"
+  },
+  {
+    "message": "<response>"
+  },
+  {
+    "message": "  <statusCode>200</statusCode>"
+  },
+  {
+    "message": "  <data>"
+  },
+  {
+    "message": "      <testId>150603_VD_9VJ</testId>"
+  },
+  {
+    "message": "      <average>"
+  },
+  {
+    "message": "         <loadTime>3594</loadTime>"
+  },
+  {
+    "message": "         <TTFB>282</TTFB>"
+  },
+  {
+    "message": "     </average>"
+  },
+  {
+    "message": " </data>"
+  },
+  {
+    "message": "</response>"
+  },
+  {
+    "message": "<response>"
+  },
+  {
+    "message": "  <statusCode>300</statusCode>"
+  },
+  {
+    "message": "  <data>"
+  },
+  {
+    "message": "      <testId>999999_VD_9VJ</testId>"
+  },
+  {
+    "message": "      <average>"
+  },
+  {
+    "message": "         <loadTime>4594</loadTime>"
+  },
+  {
+    "message": "         <TTFB>900</TTFB>"
+  },
+  {
+    "message": "     </average>"
+  },
+  {
+    "message": " </data>"
+  },
+  {
+    "message": "</response>"
   }
 ]
 ```
@@ -50,19 +92,65 @@ Result:
 ```json
 [
   {
-    "format": "clf",
-    "message": "127.0.0.1 user-identifier frank [12/Oct/2001:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326",
+    "message": "<response>\n  <statusCode>200</statusCode>\n  <data>\n      <testId>150603_VD_9VJ</testId>\n      <average>\n         <loadTime>3594</loadTime>\n         <TTFB>282</TTFB>\n     </average>\n </data>\n</response>",
     "@version": "1",
-    "@timestamp": "2001-10-12T20:55:36.000Z",
+    "@timestamp": "2015-06-05T11:42:40.448Z",
     "host": "zip",
-    "client_ip": "127.0.0.1",
-    "@clf": {
-      "user": "user-identifier",
-      "group": "frank",
-      "timestamp": "12/Oct/2001:13:55:36 -0700",
-      "request": "GET /apache_pb.gif HTTP/1.0",
-      "response": "200",
-      "bytes": "2326"
+    "tags": [
+      "multiline"
+    ],
+    "data": {
+      "statusCode": [
+        "200"
+      ],
+      "data": [
+        {
+          "testId": [
+            "150603_VD_9VJ"
+          ],
+          "average": [
+            {
+              "loadTime": [
+                "3594"
+              ],
+              "TTFB": [
+                "282"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "message": "<response>\n  <statusCode>300</statusCode>\n  <data>\n      <testId>999999_VD_9VJ</testId>\n      <average>\n         <loadTime>4594</loadTime>\n         <TTFB>900</TTFB>\n     </average>\n </data>\n</response>",
+    "@version": "1",
+    "@timestamp": "2015-06-05T11:42:40.456Z",
+    "host": "zip",
+    "tags": [
+      "multiline"
+    ],
+    "data": {
+      "statusCode": [
+        "300"
+      ],
+      "data": [
+        {
+          "testId": [
+            "999999_VD_9VJ"
+          ],
+          "average": [
+            {
+              "loadTime": [
+                "4594"
+              ],
+              "TTFB": [
+                "900"
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 ]

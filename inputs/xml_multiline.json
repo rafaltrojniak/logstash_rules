@@ -1,0 +1,21 @@
+{"message":"<?xml version=\"1.0\" encoding=\"UTF-8\"/>"}
+{"message":"<response>"}
+{"message":"  <statusCode>200</statusCode>"}
+{"message":"  <data>"}
+{"message":"      <testId>150603_VD_9VJ</testId>"}
+{"message":"      <average>"}
+{"message":"         <loadTime>3594</loadTime>"}
+{"message":"         <TTFB>282</TTFB>"}
+{"message":"     </average>"}
+{"message":" </data>"}
+{"message":"</response>"}
+{"message":"<response>"}
+{"message":"  <statusCode>300</statusCode>"}
+{"message":"  <data>"}
+{"message":"      <testId>999999_VD_9VJ</testId>"}
+{"message":"      <average>"}
+{"message":"         <loadTime>4594</loadTime>"}
+{"message":"         <TTFB>900</TTFB>"}
+{"message":"     </average>"}
+{"message":" </data>"}
+{"message":"</response>"}
