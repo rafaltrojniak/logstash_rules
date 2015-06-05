@@ -35,7 +35,7 @@ docs.each do |doc|
       results[example].each do |ex_event|
         # Dig to the event value
         value = ex_event
-        it = field_path
+        it = field_path.dup
         while it.size >0
           break unless value.is_a?(Hash)
           break unless value.key?(it.last)
