@@ -1,11 +1,11 @@
 About
 -----
-This project aims to provide full framework for :
+This project aims to provide full framework for:
 * Development and verification of Logstash processing rules
 * Provide regression tests
 * Provide documentation about gathered events
 
-TODO :
+TODO:
 * Compare that with Elasticsearch mapping files
 * Test events against Elasticserach mappings
 * Document mapping impact on events stored in Elasticsearch
@@ -27,7 +27,7 @@ Details
   * Generate documentation based on the field-documentation and processing result
 
 
-### Process stages :
+### Process stages
 * Grab and process the events using rules
   * Test if logstash successfully parsed the event
   * Test if there were invalid parsed events
